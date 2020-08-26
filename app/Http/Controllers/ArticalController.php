@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use \App\Articals;
+use \App\Artical;
 
 class ArticalController extends Controller
 {
@@ -15,7 +15,7 @@ class ArticalController extends Controller
      */
     public function index()
     {
-        $Articals = Articals::all();
+        $Articals = Artical::all();
         return view('articals.list',compact('Articals'));
     }
 
@@ -37,7 +37,7 @@ class ArticalController extends Controller
      */
     public function store(Request $request)
     {
-        Articals::create($request->all());
+        Artical::create($request->all());
         return redirect('/');
 
     }
@@ -61,7 +61,7 @@ class ArticalController extends Controller
      */
     public function edit(request $request,$id)
     {
-        $Artical = Articals::find($id);
+        $Artical = Artical::find($id);
         return view('articals.edit_artical',compact('Artical'));
     }
 
@@ -74,7 +74,7 @@ class ArticalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $Artical = Articals::find($id);
+        $Artical = Artical::find($id);
         $Artical->title = $request->title;
         $Artical->description = $request->description;
         $Artical->author = $request->author;
@@ -95,7 +95,7 @@ class ArticalController extends Controller
      */
     public function destroy($id)
     {
-        $Artical = Articals::find($id);
+        $Artical = Artical::find($id);
         $Artical->delete();
         return redirect('/');
 
